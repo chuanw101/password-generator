@@ -5,4 +5,5 @@ Simple password generator, takes in some user criterias based on hw requirements
 I used a set to make sure the generator used every character type selected.<br>
 If canceled at start it will use the default of 8,true,true,true,true as inputs.<br>
 If user tries to put in invalid input for length it will just re-ask until an ok response.<br>
-If user doesnt select any type of characters a message will be displayed instead of a password.
+If user doesnt select any type of characters a message will be displayed instead of a password.<br>
+I originally didn't see there was code already and just did everything from scratch, then re-did with template<br>
