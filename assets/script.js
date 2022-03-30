@@ -1,31 +1,38 @@
 var isStarted = false;
 
 function start() {
-  if (confirm ("Would you like to enter your password criterias?\nCancel for default")) {
-    //let user chose critiera's for pw
-    let length = choseLength();
-    let includeLowerCase = confirm("Would you like your password to include lower case characters?\nCancel=No");
-    let includeUpperCase = confirm("Would you like your password to include upper case characters?\nCancel=No");
-    let includeNumeric = confirm("Would you like your password to include numbers?\nCancel=No");
-    let includeSpecialChars = confirm("Would you like your password to include special characters?\nCancel=No");
-    
-    //call function to generate pw and dispaly it
-    document.getElementById("pw").innerHTML = generatePw(length, includeLowerCase, includeUpperCase, includeNumeric, includeSpecialChars);
-  } else {
-    //default
-    document.getElementById("pw").innerHTML = generatePw(8, true, true, true, true);
-  }
+    if (confirm ("Would you like to enter your password criterias?\nCancel for default")) {
+        //let user chose critiera's for pw
+        let length = choseLength();
+        console.log(length);
+        if (!length) {
+            //show cancelled if nothing is entered for length
+            document.getElementById("pw").innerHTML = "Cancelled";
+        } else { //no need ot run if no length is entered
+            let includeLowerCase = confirm("Would you like your password to include lower case characters?\nOk=Yes  Cancel=No");
+            let includeUpperCase = confirm("Would you like your password to include upper case characters?\nOk=Yes  Cancel=No");
+            let includeNumeric = confirm("Would you like your password to include numbers?\nOk=Yes  Cancel=No");
+            let includeSpecialChars = confirm("Would you like your password to include special characters?\nOk=Yes  Cancel=No");
+            
+            //call function to generate pw and dispaly it
+            document.getElementById("pw").innerHTML = generatePw(length, includeLowerCase, includeUpperCase, includeNumeric, includeSpecialChars);
+        }
+    } else {
+        //default
+        document.getElementById("pw").innerHTML = generatePw(8, true, true, true, true);
+    }
 }
 
 // prompt user for length of password
 function choseLength() {
     let pwLength = prompt("Choose a length for the password (8-128 characeters): ")
-    //abort if cancel
+    //return 0 if cancel
     if(pwLength === null) {
-        document.getElementById("pw").innerHTML = "aborted";
+        console.log("abort");
+        return 0;
     }
     // ask again if length given is invalid
-    else if (!isNaN(pwLength) && pwLength >= 8 && pwLength <= 128) {
+    if (!isNaN(pwLength) && pwLength >= 8 && pwLength <= 128) {
         return pwLength;
     }
     // return length if valid
