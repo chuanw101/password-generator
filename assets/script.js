@@ -92,8 +92,7 @@ function generatePw(len, lower, upper, numeric, special) {
             }
         }
         let k = Math.floor(Math.random() * chars[j].length);
-        let temp = chars[j].substring(k, k+1);
-        password += temp;
+        password += chars[j].substring(k, k+1);
     }
     return password;
 }
