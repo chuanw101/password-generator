@@ -1,7 +1,7 @@
 var isStarted = false;
 
 function start() {
-    if (confirm ("Would you like to enter your password criterias?\nCancel for default")) {
+    if (confirm ("Would you like to select your password criteria?\nCancel for default")) {
         //let user chose critiera's for pw
         let length = choseLength();
         console.log(length);
@@ -25,7 +25,7 @@ function start() {
 
 // prompt user for length of password
 function choseLength() {
-    let pwLength = prompt("Choose a length for the password (8-128 characeters): ")
+    let pwLength = prompt("Choose a length for the password (8-128 characters): ")
     //return 0 if cancel
     if(pwLength === null) {
         console.log("abort");
